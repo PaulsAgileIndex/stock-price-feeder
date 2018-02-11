@@ -24,7 +24,7 @@ backbone.
 
 ## Feedback
 
-Please feel free to ask me any question or to give me some feedback on it.
+Please feel free to ask me any question or to give me some feedback.
 
 
 ## Work Assignment
