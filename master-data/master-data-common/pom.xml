@@ -2,9 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.avoodoo</groupId>
+	<parent>
+		<groupId>edu.avoodoo</groupId>
+		<artifactId>master-data</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>master-data-common</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -37,14 +41,14 @@
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				Import dependency management from Spring Boot -->
-<!-- 				<groupId>org.springframework.boot</groupId> -->
-<!-- 				<artifactId>spring-boot-dependencies</artifactId> -->
-<!-- 				<version>1.5.9.RELEASE</version> -->
-<!-- 				<type>pom</type> -->
-<!-- 				<scope>import</scope> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- Import dependency management from Spring Boot -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-dependencies</artifactId> -->
+			<!-- <version>1.5.9.RELEASE</version> -->
+			<!-- <type>pom</type> -->
+			<!-- <scope>import</scope> -->
+			<!-- </dependency> -->
 		</dependencies>
 	</dependencyManagement>
 
@@ -65,19 +69,19 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.glassfish.jersey.core</groupId> -->
-<!-- 			<artifactId>jersey-server</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-web</artifactId> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-test</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.glassfish.jersey.core</groupId> -->
+		<!-- <artifactId>jersey-server</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-web</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-test</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
@@ -110,27 +114,27 @@
 					<artifactId>jaxws-maven-plugin</artifactId>
 					<version>2.5</version>
 				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.springframework.boot</groupId> -->
-<!-- 					<artifactId>spring-boot-maven-plugin</artifactId> -->
-<!-- 					<version>1.5.9.RELEASE</version> -->
-<!-- 				</plugin> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.springframework.boot</groupId> -->
+				<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+				<!-- <version>1.5.9.RELEASE</version> -->
+				<!-- </plugin> -->
 			</plugins>
 		</pluginManagement>
 
 		<plugins>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.springframework.boot</groupId> -->
-<!-- 				<artifactId>spring-boot-maven-plugin</artifactId> -->
-<!-- 				https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>repackage</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+			<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <goals> -->
+			<!-- <goal>repackage</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
