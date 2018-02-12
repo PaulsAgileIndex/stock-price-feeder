@@ -15,6 +15,10 @@ knows the same set of security identification A1 to Z100. And feeds to an [Apach
 backbone.
 
 
+- Dockerized [master-data-app](https://github.com/PaulsAgileIndex/stock-price-feeder/tree/master/master-data/master-data-app) application (SpringBoot, etc.)
+  and a common library depicting the structure of the master data [master-data-model](https://github.com/PaulsAgileIndex/stock-price-feeder/tree/master/master-data/master-data-model) 
+  
+
 - Dockerized [stock-market-simu](https://github.com/PaulsAgileIndex/stock-price-feeder/tree/master/stock-market-simu) 
   application (SpringBoot, etc.)
 
