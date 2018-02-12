@@ -17,8 +17,8 @@ cat << EOF
 	
 EOF
 
-#docker kill consul
-#docker rm consul
+docker kill consul
+docker rm consul
 ## With a volume created on your local machine (host)
 #export CONSUL_HOST_VOLUME=/var/data/consul/data
 #mkdir -p $CONSUL_HOST_VOLUME
@@ -26,7 +26,7 @@ EOF
 #docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp -v $CONSUL_HOST_VOLUME:/data -h node1 progrium/consul -server -bootstrap -ui-dir /ui
 
 ## Without a volume on the host
-#docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp  -h node1 progrium/consul -server -bootstrap -ui-dir /ui
+docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp  -h node1 progrium/consul -server -bootstrap -ui-dir /ui
 
 
 cat << EOF
@@ -63,20 +63,24 @@ cat << EOF
 EOF
 
 ## Stage: dev
-curl -X PUT -d 'DEV:master-data-app' http://localhost:8500/v1/kv/dev/master-data-app/base/info/deployed/application
-curl -X PUT -d 'dev' http://localhost:8500/v1/kv/dev/master-data-app/base/info/deployed/stage
+curl -X PUT -d 'DEV:stock-market-simu' http://localhost:8500/v1/kv/dev/stock-market-simu/base/info/deployed/application
+curl -X PUT -d 'dev' http://localhost:8500/v1/kv/dev/stock-market-simu/base/info/deployed/stage
+curl -X PUT -d 'http://172.17.0.1:8080/' http://localhost:8500/v1/kv/dev/stock-market-simu/master/data/exchange/rs
 
 ## Stage: test
-curl -X PUT -d 'TEST:master-data-app' http://localhost:8500/v1/kv/test/master-data-app/base/info/deployed/application
-curl -X PUT -d 'test' http://localhost:8500/v1/kv/test/master-data-app/base/info/deployed/stage
+curl -X PUT -d 'TEST:stock-market-simu' http://localhost:8500/v1/kv/test/stock-market-simu/base/info/deployed/application
+curl -X PUT -d 'test' http://localhost:8500/v1/kv/test/stock-market-simu/base/info/deployed/stage
+curl -X PUT -d 'http://172.17.0.1:8080/' http://localhost:8500/v1/kv/test/stock-market-simu/master/data/exchange/rs
 
 ## Stage: uat
-curl -X PUT -d 'UAT:master-data-app' http://localhost:8500/v1/kv/uat/master-data-app/base/info/deployed/application
-curl -X PUT -d 'uat' http://localhost:8500/v1/kv/uat/master-data-app/base/info/deployed/stage
+curl -X PUT -d 'UAT:stock-market-simu' http://localhost:8500/v1/kv/uat/stock-market-simu/base/info/deployed/application
+curl -X PUT -d 'uat' http://localhost:8500/v1/kv/uat/stock-market-simu/base/info/deployed/stage
+curl -X PUT -d 'http://172.17.0.1:8080/' http://localhost:8500/v1/kv/uat/stock-market-simu/master/data/exchange/rs
 
 ## Stage: prod
-curl -X PUT -d 'master-data-app' http://localhost:8500/v1/kv/prod/master-data-app/base/info/deployed/application
-curl -X PUT -d 'prod' http://localhost:8500/v1/kv/prod/master-data-app/base/info/deployed/stage
+curl -X PUT -d 'stock-market-simu' http://localhost:8500/v1/kv/prod/stock-market-simu/base/info/deployed/application
+curl -X PUT -d 'prod' http://localhost:8500/v1/kv/prod/stock-market-simu/base/info/deployed/stage
+curl -X PUT -d 'http://172.17.0.1:8080/' http://localhost:8500/v1/kv/prod/stock-market-simu/master/data/exchange/rs
 
 cat << EOF
 
@@ -86,31 +90,31 @@ cat << EOF
    ##  Start application "master-data-app"                    ##
    ##  for stages:                                            ##
    ##                                                         ##
-   ##  dev  (8080)                                            ##
-   ##  test (8081)                                            ##
-   ##  uat  (8082)                                            ##
-   ##  prod (8083)                                            ##
+   ##  dev  (8180)                                            ##
+   ##  test (8181)                                            ##
+   ##  uat  (8182)                                            ##
+   ##  prod (8183)                                            ##
    ##                                                         ##
    #############################################################
 
 EOF
 
 ## Stage: dev
-docker kill master-data-app-dev
-docker rm master-data-app-dev
-docker run -dit -p 8080:8080 -e"STAGE=dev" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-dev --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+docker kill stock-market-simu-dev
+docker rm stock-market-simu-dev
+docker run -dit -p 8180:8080 -e"STAGE=dev" -e"CONSUL_NODE=172.17.0.1:8500" --name=stock-market-simu-dev --network=bridge avoodoo/stock-market-simu:1.0-SNAPSHOT
 ## Stage: test
-#docker kill master-data-app-test
-#docker rm master-data-app-test
-#docker run -itd -p 8081:8080 -e"STAGE=test" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-test --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+#docker kill stock-market-simu-test
+#docker rm stock-market-simu-test
+#docker run -itd -p 8181:8080 -e"STAGE=test" -e"CONSUL_NODE=172.17.0.1:8500" --name=stock-market-simu-test --network=bridge avoodoo/stock-market-simu:1.0-SNAPSHOT
 ## Stage: uat
-#docker kill master-data-app-uat
-#docker rm master-data-app-uat
-#docker run -itd -p 8082:8080 -e"STAGE=uat" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-uat --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+#docker kill stock-market-simu-uat
+#docker rm stock-market-simu-uat
+#docker run -itd -p 8182:8080 -e"STAGE=uat" -e"CONSUL_NODE=172.17.0.1:8500" --name=stock-market-simu-uat --network=bridge avoodoo/stock-market-simu:1.0-SNAPSHOT
 ## Stage: prod
-#docker kill master-data-app-prod
-#docker rm master-data-app-prod
-#docker run -itd -p 8083:8080 -e"STAGE=prod" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-prod --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+#docker kill stock-market-simu-prod
+#docker rm stock-market-simu-prod
+#docker run -itd -p 8183:8080 -e"STAGE=prod" -e"CONSUL_NODE=172.17.0.1:8500" --name=stock-market-simu-prod --network=bridge avoodoo/stock-market-simu:1.0-SNAPSHOT
 
 cat << EOF
 
@@ -120,10 +124,10 @@ cat << EOF
    ##  Let Docker some time to start the container before     ##
    ##  testing with e.g. POSTMAN                              ##
    ##                                                         ##
-   ##  dev  (8080)                                            ##
-   ##  test (8081)                                            ##
-   ##  uat  (8082)                                            ##
-   ##  prod (8083)                                            ##
+   ##  dev  (8180)                                            ##
+   ##  test (8181)                                            ##
+   ##  uat  (8182)                                            ##
+   ##  prod (8183)                                            ##
    ##                                                         ##
    ##  My machine need around 30s to set up.                  ##
    ##                                                         ##
@@ -151,5 +155,5 @@ EOF
 
 docker ps
 
-docker exec -it master-data-app-dev bash
+docker exec -it stock-market-simu-dev bash
 

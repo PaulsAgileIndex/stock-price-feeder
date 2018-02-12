@@ -32,3 +32,4 @@
 base.info.deployed.application={{key (print $prefix "/base/info/deployed/application")}}
 base.info.deployed.stage={{key (print $prefix "/base/info/deployed/stage")}}
 server.port=8080
+master.data.exchange.rs={{key (print $prefix "/master/data/exchange/rs")}}
