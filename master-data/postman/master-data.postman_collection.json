@@ -1,0 +1,63 @@
+{
+	"info": {
+		"name": "master-data",
+		"_postman_id": "838536c8-d05e-ce14-c0d6-2c6bb418feaf",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllMic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/master/data/getAllMic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"master",
+						"data",
+						"getAllMic"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getMicByCode",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/master/data/getMicByCode?micCode=XSWX",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"master",
+						"data",
+						"getMicByCode"
+					],
+					"query": [
+						{
+							"key": "micCode",
+							"value": "XSWX",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
