@@ -18,6 +18,11 @@
 		<dependencies>
 			<dependency>
 				<groupId>edu.avoodoo</groupId>
+				<artifactId>master-data-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.avoodoo</groupId>
 				<artifactId>master-data-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -54,6 +59,10 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>edu.avoodoo</groupId>
+			<artifactId>master-data-client</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>edu.avoodoo</groupId>
 			<artifactId>master-data-model</artifactId>
