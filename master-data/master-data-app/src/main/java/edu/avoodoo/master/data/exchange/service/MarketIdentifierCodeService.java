@@ -14,7 +14,12 @@ import edu.avoodoo.master.data.exchange.model.MarketIdentifierCode;
 import edu.avoodoo.master.data.exchange.model.MicCodeType;
 import edu.avoodoo.master.data.exchange.model.MicStatus;
 
-
+/**
+ * Load the master data from a data store.
+ * 
+ * @author frank
+ *
+ */
 @Service
 public class MarketIdentifierCodeService implements MarketIdentifierCodeServiceInterface {
 
