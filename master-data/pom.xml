@@ -43,7 +43,7 @@
 
 	<modules>
 		<module>master-data-app</module>
-		<module>master-data-common</module>
+		<module>master-data-model</module>
 	</modules>
 
 	<build>

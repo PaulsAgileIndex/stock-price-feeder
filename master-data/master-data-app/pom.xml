@@ -22,7 +22,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>master-data-common</artifactId>
+			<artifactId>master-data-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
