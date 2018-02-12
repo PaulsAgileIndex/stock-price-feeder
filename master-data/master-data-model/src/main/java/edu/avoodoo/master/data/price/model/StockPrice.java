@@ -1,11 +1,11 @@
-package edu.avoodoo.stock.maket.simu.model;
+package edu.avoodoo.master.data.price.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Currency;
 import java.util.Locale;
 
-import edu.avoodoo.stock.maket.simu.model.exchange.MarketIdentifierCode;
+import edu.avoodoo.master.data.exchange.model.MarketIdentifierCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

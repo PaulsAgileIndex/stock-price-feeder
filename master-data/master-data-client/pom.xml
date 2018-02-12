@@ -2,9 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>edu.avoodoo</groupId>
-	<artifactId>stock-market-simu</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<parent>
+		<groupId>edu.avoodoo</groupId>
+		<artifactId>master-data</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>master-data-client</artifactId>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -16,11 +20,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>edu.avoodoo</groupId>
-				<artifactId>master-data-model</artifactId>
-				<version>${project.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
@@ -42,21 +41,22 @@
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
-			<dependency>
-				<!-- Import dependency management from Spring Boot -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.9.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+			<!-- <dependency> -->
+			<!-- Import dependency management from Spring Boot -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-dependencies</artifactId> -->
+			<!-- <version>1.5.9.RELEASE</version> -->
+			<!-- <type>pom</type> -->
+			<!-- <scope>import</scope> -->
+			<!-- </dependency> -->
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
-			<groupId>edu.avoodoo</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>master-data-model</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -74,23 +74,23 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-server</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.glassfish.jersey.core</groupId> -->
+		<!-- <artifactId>jersey-server</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-web</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-test</artifactId> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
-		<finalName>stock-market-simu</finalName>
+		<finalName>master-data-client</finalName>
 
 		<pluginManagement>
 			<plugins>
@@ -119,50 +119,27 @@
 					<artifactId>jaxws-maven-plugin</artifactId>
 					<version>2.5</version>
 				</plugin>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>1.5.9.RELEASE</version>
-				</plugin>
-				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>dockerfile-maven-plugin</artifactId>
-					<!-- https://github.com/spotify/dockerfile-maven -->
-					<version>1.3.7</version>
-					<executions>
-						<execution>
-							<id>default</id>
-							<goals>
-								<goal>build</goal>
-								<!-- <goal>push</goal> -->
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<repository>avoodoo/${project.build.finalName}</repository>
-						<tag>${project.version}</tag>
-						<buildArgs>
-							<ARTIFACT_NAME>${project.build.finalName}</ARTIFACT_NAME>
-							<ARTIFACT_FILE_EXTENSION>${project.packaging}</ARTIFACT_FILE_EXTENSION>
-						</buildArgs>
-					</configuration>
-				</plugin>
+				<!-- <plugin> -->
+				<!-- <groupId>org.springframework.boot</groupId> -->
+				<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+				<!-- <version>1.5.9.RELEASE</version> -->
+				<!-- </plugin> -->
 			</plugins>
 		</pluginManagement>
 
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html -->
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+			<!-- https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <goals> -->
+			<!-- <goal>repackage</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -181,10 +158,6 @@
 					<!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,4 +1,4 @@
-package edu.avoodoo.master.data.model.exchange;
+package edu.avoodoo.master.data.exchange.model;
 
 import lombok.Getter;
 

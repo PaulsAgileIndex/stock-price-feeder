@@ -43,6 +43,7 @@
 
 	<modules>
 		<module>master-data-app</module>
+		<module>master-data-client</module>
 		<module>master-data-model</module>
 	</modules>
 

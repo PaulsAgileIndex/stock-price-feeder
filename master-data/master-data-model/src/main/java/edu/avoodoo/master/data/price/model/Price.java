@@ -1,4 +1,4 @@
-package edu.avoodoo.stock.maket.simu.model;
+package edu.avoodoo.master.data.price.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

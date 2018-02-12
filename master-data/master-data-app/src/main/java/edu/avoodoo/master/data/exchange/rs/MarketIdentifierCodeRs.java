@@ -1,7 +1,8 @@
-package edu.avoodoo.master.data.model.exchange.rs;
+package edu.avoodoo.master.data.exchange.rs;
 
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.avoodoo.master.data.model.exchange.MarketIdentifierCode;
+import edu.avoodoo.master.data.exchange.model.MarketIdentifierCode;
+import edu.avoodoo.master.data.exchange.service.MarketIdentifierCodeServiceInterface;
 
 //import edu.avoodoo.master.data.model.exchange.MarketIdentifierCode;
 
@@ -24,14 +26,20 @@ public class MarketIdentifierCodeRs {
 	
 	private static final Logger LOG = Logger.getLogger(MarketIdentifierCodeRs.class);
 
+	@Inject
+	MarketIdentifierCodeServiceInterface c;
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/master/data/getAllMic")
 	public Map<String, MarketIdentifierCode> getAllMic() {
-		return MarketIdentifierCode.getAllMic();
+		if (null != c) {
+			return c.getAllMic();
+		}
+		return null;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/master/data/getMicByCode")
 	public MarketIdentifierCode getMicByCode(@PathParam("micCode")String micCode) {
-		return MarketIdentifierCode.getMicByCode(micCode);
+		return c.getMicByCode(micCode);
 	}
 		
 	@RequestMapping(method = RequestMethod.GET, path = "/master/data/isalive")

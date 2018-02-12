@@ -1,15 +1,15 @@
-package edu.avoodoo.stock.maket.simu.model.exchange;
+package edu.avoodoo.master.data.exchange.model;
 
 import lombok.Getter;
 
 @Getter
-public enum Status {
+public enum MicStatus {
 
 	Active("ACTIVE"), Inactive("INACTIVE");
 	
 	private String name;
 
-	Status(String name) {
+	MicStatus(String name) {
 		this.name = name;
 	}
 
