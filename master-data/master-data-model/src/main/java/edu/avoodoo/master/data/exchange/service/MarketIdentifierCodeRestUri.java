@@ -1,4 +1,4 @@
-package edu.avoodoo.master.data.exchange.consts;
+package edu.avoodoo.master.data.exchange.service;
 
 public interface MarketIdentifierCodeRestUri {
 	

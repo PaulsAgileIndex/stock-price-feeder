@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.avoodoo.master.data.exchange.consts.MarketIdentifierCodeRestUri;
 import edu.avoodoo.master.data.exchange.model.MarketIdentifierCode;
+import edu.avoodoo.master.data.exchange.service.MarketIdentifierCodeRestUri;
 import edu.avoodoo.master.data.exchange.service.MarketIdentifierCodeServiceInterface;
 
 //import edu.avoodoo.master.data.model.exchange.MarketIdentifierCode;

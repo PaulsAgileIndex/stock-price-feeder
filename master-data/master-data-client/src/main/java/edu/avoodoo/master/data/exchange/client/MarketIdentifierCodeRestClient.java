@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import edu.avoodoo.master.data.exchange.consts.MarketIdentifierCodeRestUri;
 import edu.avoodoo.master.data.exchange.model.MarketIdentifierCode;
+import edu.avoodoo.master.data.exchange.service.MarketIdentifierCodeRestUri;
 import edu.avoodoo.master.data.exchange.service.MarketIdentifierCodeServiceInterface;
 
 @Service
