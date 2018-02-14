@@ -17,8 +17,8 @@ cat << EOF
 	
 EOF
 
-docker kill consul
-docker rm consul
+#docker kill consul
+#docker rm consul
 ## With a volume created on your local machine (host)
 #export CONSUL_HOST_VOLUME=/var/data/consul/data
 #mkdir -p $CONSUL_HOST_VOLUME
@@ -98,6 +98,13 @@ cat << EOF
    #############################################################
 
 EOF
+
+docker run -d \
+  --name=registrator \
+  --net=host \
+  --volume=/var/run/docker.sock:/tmp/docker.sock \
+gliderlabs/registrator:latest \
+consul://172.17.0.1:8500
 
 ## Stage: dev
 docker kill stock-market-simu-dev

@@ -26,7 +26,7 @@ EOF
 #docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp -v $CONSUL_HOST_VOLUME:/data -h node1 progrium/consul -server -bootstrap -ui-dir /ui
 
 ## Without a volume on the host
-#docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp  -h node1 progrium/consul -server -bootstrap -ui-dir /ui
+docker run --name=consul --network=bridge -itd -p 8400:8400 -p 8500:8500 -p 8600:53/udp  -h node1 progrium/consul -server -bootstrap -ui-dir /ui
 
 
 cat << EOF
@@ -100,13 +100,13 @@ docker kill master-data-app-dev
 docker rm master-data-app-dev
 docker run -dit -p 8080:8080 -e"STAGE=dev" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-dev --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
 ## Stage: test
-#docker kill master-data-app-test
-#docker rm master-data-app-test
-#docker run -itd -p 8081:8080 -e"STAGE=test" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-test --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+docker kill master-data-app-test
+docker rm master-data-app-test
+docker run -itd -p 8081:8080 -e"STAGE=test" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-test --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
 ## Stage: uat
-#docker kill master-data-app-uat
-#docker rm master-data-app-uat
-#docker run -itd -p 8082:8080 -e"STAGE=uat" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-uat --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
+docker kill master-data-app-uat
+docker rm master-data-app-uat
+docker run -itd -p 8082:8080 -e"STAGE=uat" -e"CONSUL_NODE=172.17.0.1:8500" --name=master-data-app-uat --network=bridge avoodoo/master-data-app:1.0-SNAPSHOT
 ## Stage: prod
 #docker kill master-data-app-prod
 #docker rm master-data-app-prod
