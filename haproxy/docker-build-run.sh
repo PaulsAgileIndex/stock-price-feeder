@@ -1,8 +1,12 @@
 #!/bin/bash -x
 
-CONSUL_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' consul-local-agent)
-
 docker build -t avoodoo/haproxy:1.0-SNAPSHOT .
+
+CONSUL_GATEWAY_IP=$(docker inspect -f '{{range .IPAM.Config}}{{.Gateway}}{{end}}' ingress)
+echo $CONSUL_GATEWAY_IP
+
+CONSUL_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}' consul-local-agent)
+echo $CONSUL_IP
 
 docker kill haproxy
 docker rm haproxy

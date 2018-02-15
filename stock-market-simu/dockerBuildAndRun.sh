@@ -3,8 +3,10 @@
 
 mvn clean install -DskipTests
 
-CONSUL_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' consul-local-agent)
+#CONSUL_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' consul-local-agent)
+CONSUL_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}' consul-local-agent)
 HAPROXY_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' haproxy)
+
 
 echo $CONSUL_IP
 echo $HAPROXY_IP
