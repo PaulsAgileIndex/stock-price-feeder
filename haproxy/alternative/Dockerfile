@@ -31,13 +31,11 @@ ADD haproxy.cfg /etc/haproxy/haproxy.cfg
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
 
-ADD haproxy-command.sh /haproxy-command.sh
-RUN chmod u+x /haproxy-command.sh
+ADD haproxy-exec.sh /haproxy-exec.sh
+RUN chmod u+x /haproxy-exec.sh
 
 ADD haproxy.tpl /etc/haproxy/haproxy.tpl
-ADD consul.hcl /consul.hcl
 
-EXPOSE 1080 1081
 
 WORKDIR /
 
