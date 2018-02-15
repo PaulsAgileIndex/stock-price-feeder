@@ -5,6 +5,7 @@ MAINTAINER Frank Sprich <frank.sprich@gmail.com>
 ## Install Java
 RUN \
 	apt-get update && \
+	apt-get install -y iputils-ping && \
     apt-get install -y openjdk-8-jre-headless && \
     apt-get clean && \
     java -version    

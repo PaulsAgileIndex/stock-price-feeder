@@ -14,7 +14,13 @@ defaults
   timeout connect 5000
   timeout client 50000
   timeout server 50000
-
+  errorfile 400 /etc/haproxy/errors/400.http
+  errorfile 403 /etc/haproxy/errors/403.http
+  errorfile 408 /etc/haproxy/errors/408.http
+  errorfile 500 /etc/haproxy/errors/500.http
+  errorfile 502 /etc/haproxy/errors/502.http
+  errorfile 503 /etc/haproxy/errors/503.http
+  errorfile 504 /etc/haproxy/errors/504.http
 
 frontend master-data-app-frontend
   bind *:1080
@@ -22,11 +28,8 @@ frontend master-data-app-frontend
   default_backend master-data-app-backend
 
 backend master-data-app-backend
-	mode http
-    option forwardfor
     balance roundrobin{{range service "master-data-app"}}
     server {{.Node}} {{.Address}}:{{.Port}} check{{end}}
-    
     
 frontend stock-market-simu-frontend
   bind *:1081
@@ -34,17 +37,13 @@ frontend stock-market-simu-frontend
   default_backend stock-market-simu-backend
 
 backend stock-market-simu-backend
-	mode http
-    option forwardfor
     balance roundrobin{{range service "stock-market-simu"}}
-    server {{.Node}} {{.Address}}:{{.Port}} check{{end}}
+    server {{.Node}} {{.Address}}:{{.Port}} check{{end}}    
         
-    
-listen stats 
+listen stats    
 	bind *:9000
-    stats enable
-    stats uri /haproxy_stats
-    stats realm HAProxy\ Statistics
-    stats hide-version
-    stats auth admin:avoodoo   
-    stats admin if TRUE     
+  	stats enable
+  	stats uri /haproxy_stats  
+  	stats realm HAProxy\ Statistics
+  	stats auth admin:avoodoo
+  	stats admin if TRUE    

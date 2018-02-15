@@ -4,6 +4,7 @@ MAINTAINER Frank Sprich <frank.sprich@gmail.com>
 
 RUN \
 	apt-get update && \
+	apt-get install -y iputils-ping && \
 	apt-get install -y software-properties-common && \
 	add-apt-repository ppa:vbernat/haproxy-1.6 && \
 	apt-get update && \
@@ -37,7 +38,7 @@ RUN chmod u+x /haproxy-command.sh
 ADD haproxy.tpl /etc/haproxy/haproxy.tpl
 ADD consul.hcl /consul.hcl
 
-EXPOSE 1080 1081
+EXPOSE 1080 1081 9000
 
 WORKDIR /
 
